@@ -3,20 +3,10 @@
 		<!-- 页面 header 相关部分 -->
 		<view class="headerBox">
 			<!-- 顶部广告位轮播图 -->
-			<swiper class="swiper" :indicator-dots="false" :autoplay="true" :interval="3000" :duration="500">
+			<swiper class="swiper" :indicator-dots="false" :autoplay="true" :circular="true" :interval="3000" :duration="500">
 				<swiper-item>
-					<navigator url="http://baidu.com" open-type="navigate">
+					<navigator :url="'../webview/webview?url=' + encodeURI('http://baidu.com')" open-type="navigate">
 						<image class="bannerSwiperImg" src="@/static/images/index/swiper1.jpg" mode="aspectFill" />
-					</navigator>
-				</swiper-item>
-				<swiper-item>
-					<navigator url="http://baidu.com" open-type="navigate">
-						<image class="bannerSwiperImg" src="@/static/images/index/swiper2.jpg" mode="aspectFill" />
-					</navigator>
-				</swiper-item>
-				<swiper-item>
-					<navigator url="http://baidu.com" open-type="navigate">
-						<image class="bannerSwiperImg" src="@/static/images/index/swiper3.jpg" mode="aspectFill" />
 					</navigator>
 				</swiper-item>
 			</swiper>
@@ -24,13 +14,13 @@
 			<image class="crile" src="@/static/images/index/crile.png" mode="aspectFill" />
 			<!-- 两个选项按钮 -->
 			<view class="cardHeader">
-				<view class="cardOne cardLeft">
+				<view class="cardOne cardLeft" @tap="gotoTab('/page/feeds/feeds')">
 					<image class="img" src="@/static/images/index/coffee.png" mode="widthFix">
 					<view class="iright">
 						<view class="title">精彩动态</view>
 					</view>
 				</view>
-				<view class="cardOne cardRight">
+				<view class="cardOne cardRight" @tap="gotoTab('/page/me/me')">
 					<image class="img" src="@/static/images/index/ran.png" mode="widthFix">
 					<view class="iright">
 						<view class="title">个人中心</view>
@@ -43,6 +33,8 @@
 				<view class="oneNav">资讯</view>
 			</view>
 		</view>
+		
+		<!--  -->
 	</view>
 </template>
 
@@ -57,7 +49,9 @@
 
 		},
 		methods: {
-
+			gotoTab(url) {
+				uni.switchTab({ url })
+			}
 		}
 	}
 </script>
